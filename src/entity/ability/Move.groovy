@@ -1,11 +1,18 @@
 package entity.ability;
 
-class Move extends Ability { 
+class Move extends Ability {
   int x, y;
-  Move(x,y) { to(x,y) }
-  def to(x,y) {[ this.x = x, this.y = y ]}
-  def position() {[ this.x, this.y ]} // TODO try to attach this to it's child class instead
+  Move(x,y) {
+    exports = ['moveTo':   { a,b -> to(a,b) },
+               'position': { position()     }]
+    to(x,y)
+  }
+  def to(int x, y) { 
+    this.x = x
+    this.y = y
+    this
+  }
+  def position() {[ this.x, this.y ]}
 }
 
-// stick callbacks in instance variables/fields
 
