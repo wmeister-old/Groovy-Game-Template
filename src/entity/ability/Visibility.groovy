@@ -1,13 +1,18 @@
 package entity.ability;
 
-abstract class Visibility extends Ability { 
-  boolean visible = null
+class Visibility extends Ability { 
+  boolean visible;
+  Visibility(bool) { this.visible = bool }
+  def toggle() { 
+    (this.visible) ? hide() : show()
+    this
+  }
   def show() { 
-    // TODO show it
     visible = true
+    this
   }
   def hide() { 
-    // TODO hide it
     visible = false
+    this
   }
 }
